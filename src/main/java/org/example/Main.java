@@ -3,9 +3,7 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
 
-
-
-       System.out.println(shouldWakeUp(true, 22));
+        System.out.println(shouldWakeUp(true, 22));
 
         System.out.println(hasTeen(8,7,15));
 
@@ -16,30 +14,28 @@ public class Main {
     }
 
     public static boolean shouldWakeUp(boolean isBarking, int clock) {
-
-
+        // Saat geçersizse (0'dan küçük ya da 23'ten büyükse)
         if (clock < 0 || clock > 23) {
             return false;
         }
 
-        if (isBarking == true && (clock < 20 && clock > 8)) {
+        // Köpek havlıyorsa ve saat 8 akşam ile 8 sabah arasındaysa
+        if (isBarking && (clock >= 0 && clock < 8 || clock >= 20 && clock <= 23)) {
             return true;
-        } else {
-            return false;
         }
 
-
+        return false; // Diğer durumlarda false döneriz
     }
 
 
- public static boolean hasTeen(int firstAge, int secondAge, int thirdAge) {
-         if((firstAge<19 && firstAge>13)||(secondAge<19 && secondAge>13)||(thirdAge<19 && thirdAge>13))
-         {
-             return true;
-         }
+    public static boolean hasTeen(int firstAge, int secondAge, int thirdAge) {
+        if((firstAge>=13 && firstAge<=19)||(secondAge>=13 && secondAge<=19)||(thirdAge>=13 && thirdAge<=19))
+        {
+            return true;
+        }
 
-     return false;
- }
+        return false;
+    }
 
 
 
@@ -52,7 +48,7 @@ public class Main {
         {
             return true;
         }
-       return false;
+        return false;
     }
 
     public static double area(double width, double height) {
@@ -65,10 +61,10 @@ public class Main {
     }
 
     public static double area(double radius) {
-   if(radius<0)
-   {
-       return -1;
-   }
-   return radius*radius*Math.PI;
+        if(radius<0)
+        {
+            return -1;
+        }
+        return radius*radius*Math.PI;
     }
 }
